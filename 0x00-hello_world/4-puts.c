@@ -3,8 +3,7 @@
  \**
  *main this is main function
  *   Return : 0 (sucess)`
- *   
- *
+ 
  *\
    int main(void)
 {
