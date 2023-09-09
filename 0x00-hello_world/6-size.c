@@ -1,4 +1,4 @@
-#include<stdio-h>
+#include <stdio-h>
 /**
  * main -this describe the main function of code
  * Return: always 0 (success)
