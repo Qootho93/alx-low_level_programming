@@ -2,6 +2,7 @@
 
 /**
  * print_alphabet_x10 - print alphabets 10 times in lowercase
+ * followed by newline
  */
 void print_alphabet_x10(void)
 {
@@ -9,7 +10,6 @@ void print_alphabet_x10(void)
 	int i;
 
 	i = 0;
-
 	while (i < 10)
 	{
 		ch = 'a';
@@ -18,8 +18,8 @@ void print_alphabet_x10(void)
 			_putchar(ch);
 			ch++;
 		}
-		_putchar('\n);
-		i++;
+		_putchar('\n';)
+			i++;
 	}
 }
 
