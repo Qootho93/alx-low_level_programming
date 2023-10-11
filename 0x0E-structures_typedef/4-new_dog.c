@@ -1,45 +1,76 @@
 #include "dog.h"
 #include <stdlib.h>
 /**
- * new_dog - function tht creates a new sructure
- * @name: dog's name
- * @age: dog's age
- * @owner: dog's owner
- * Return: pointer tonewly created dog structure
+ * _strlen - returns length of the string
+ * @s: string to evaluate
+ * Return: length of string
+ */
+int _strlen(char *s)
+{
+	int i;
+
+	i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+/**
+ * _strcpy - copies string poited by src
+ * @dest: pointer to the buffer to be copied
+ * @src: string to be copied
+ * Return: pointer to dest
+ */
+char _strcpy(char *dest, char *src)
+{
+	int len, i;
+
+	len = 0;
+	while (src[len] != '\0')
+	{
+		len++;
+	}
+	for (i = 0; i < len; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+/**
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of a dog
+ * Return: pointer to new dog (success), NULL otherwise
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
-	char *cpyname, cpyowner;
-	int len_name = 0, len_owner = 0, i;
+	len1 = _strlen(name);
+	len2 = _strlen(owner);
 
-	if (name == NULL || owner == NULL)
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
 		return (NULL);
 
-	while (name[len_name])
-		len_name++;
-	while (ownner[len_owner])
-		len owner++;
-
-	new_dog == malloc(sizeof(dog_t));
-	if (new_dog == NULL)
+	dog->name = malloc(sizeof(char) * (len1 + 1));
+	if (dog->name == NULL)
+	{
+		free(dog);
 		return (NULL);
-	cpyname = malloc(len_name + 1);
-	if (cpyname == NULL)
+	}
+	dog->owner = malloc(sizeof(char) * (len2 + 1));
+	{
+		free(dog);
+		free(dog->name);
 		return (NULL);
-	for (i = 0; name[i]; i++)
-		cpyname[i] = name[i];
-	cpyname[i] = '0\';
+	}
+	_strcpy(dog->name, name);
+	_strcpy(dog->owner, owner);
+	dog->age = age;
 
-	cpyowner = malloc(len_owner + 1);
-	if (cpyowner == NULL)
-		return (NULL);
-	for (i = 0; owner[i]; i++)
-		cpyowner[i] = owner[i];
-	cpyowner[i] = '\0';
+	return (dog);
 
-	new_dog->name = cpyname;
-	new_dog->age = age;
-	new_dog->owner = cpyowner;
-	return (new_dog);
-}	
+}
