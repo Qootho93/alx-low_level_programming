@@ -18,16 +18,17 @@ int _strlen(char *s)
 	return (i);
 }
 /**
- * _strcpy - copies string poited by src
+ * *_strcpy - copies string poited by src
  * @dest: pointer to the buffer to be copied
  * @src: string to be copied
  * Return: pointer to dest
  */
 char _strcpy(char *dest, char *src)
-{
+	{
 	int len, i;
 
 	len = 0;
+
 	while (src[len] != '\0')
 	{
 		len++;
@@ -37,7 +38,8 @@ char _strcpy(char *dest, char *src)
 		dest[i] = src[i];
 	}
 	dest[i] = '\0';
-	return (dest);
+
+	return (*dest);
 }
 /**
  * new_dog - creates a new dog
@@ -48,6 +50,9 @@ char _strcpy(char *dest, char *src)
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+	dog_t *dog;
+	int len1, len2;
+
 	len1 = _strlen(name);
 	len2 = _strlen(owner);
 
