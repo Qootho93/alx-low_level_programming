@@ -1,6 +1,7 @@
 #include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
+
 /**
  * print_all - prints anything
  * @format: lists of all arguments passed
@@ -22,8 +23,8 @@ void print_all(const char * const format, ...)
 				case 'c':
 					printf("%s%c", sep, va_arg(list, int));
 					break;
-					case 'i':
-						printf("%s%d", sep, va_arg(list, int));
+				case 'i':
+					printf("%s%d", sep, va_arg(list, int));
 					break;
 				case 'f':
 					printf("%s%f", sep, va_arg(list, double));
@@ -45,5 +46,4 @@ void print_all(const char * const format, ...)
 
 	printf("\n");
 	va_end(list);
-
 }
