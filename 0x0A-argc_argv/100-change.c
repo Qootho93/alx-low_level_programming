@@ -4,7 +4,7 @@
 
 /**
  * main - prints minimum number of of coins to
- * make chang for amount of money
+ * make change for amount of money
  * @argc: arguments
  * @argv: arry arguments
  * Return: 0 (success), 1 (Error)
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	}
 
 	num = atoi(argv[1]);
-	return (0);
+	result = 0;
 
 	if (num < 0)
 	{
