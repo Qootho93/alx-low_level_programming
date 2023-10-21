@@ -1,12 +1,9 @@
-#include <stdio.h>
-
-void fisrt(void) __attribute__ ((constructor));
-
+#include "lists.h"
+void ComeFisrt(void) __attribute__ ((constructor));
 /**
- * first - prints a sentence before main
- * function is executed
+ * ComeFirst - prints a sentence before main function
  */
-void first(void)
+void ComeFirst(void)
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");
