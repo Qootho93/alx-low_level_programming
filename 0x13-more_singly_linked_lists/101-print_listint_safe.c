@@ -1,80 +1,33 @@
 #include "lists.h"
 #include <stdio.h>
 
-size_t looped_listint_len(const listint_t *head);
-size_t print_listint_safe(const listint_t *head);
-
 /**
- * looped_listint_len - count the number of unique nodes
- * @head: pointer to the head
- * Return: if the list is not looped - 0.
- * otherwise the number of unique nodes in the lists
- */
-size_t looped_listint_len(const listint_t *head)
-{
-	const listint_t *tortoise, *hare;
-	size_t nodes = 1;
-
-	if (head == NULL || head->next == NULL)
-		return (0);
-
-	tortoise = head->next;
-	hare = (head->next)->next;
-
-	while (hare)
-	{
-		if (tortoise == hare)
-		{
-			tortoise = head;
-			while (tortoise != hare)
-			{
-				nodes++;
-				tortoise = tortoise->next;
-				hare = hare->next;
-			}
-
-			tortoise = tortoise->next;
-			while (tortoise != hare)
-			{
-				nodes++;
-				tortoise = tortoise->next;
-			}
-			return (nodes);
-		}
-
-		tortoise = tortoise->next;
-		hare = (hare->next)->next;
-	}
-	return (0);
-}
-
-/**
- * print_listint_safe - prints a listint_t safely
- * @head: pointer to the hesd of listint_t list
- * Return: number of nodes to the list
+ * print_listint_safe - prints elements in a list
+ * @head: linst int structure
+ * Return: the number of nodes in the list
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t nodes, index = 0;
+	size_t nodes;
+	const listint_t *tortoise = head, *hare = head;
 
-	nodes = looped_listint_len(head);
+	if (head == NULL)
+		exit(98);
 
-	if (nodes == 0)
+	while (tortoise && hare && hare->next && head)
 	{
-		for (; head != NULL; nodes++)
+		tortoise = tortoise->next;
+		hare = hare->next->next;
+		if (tortoise == hare)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			printf("-> [%p] %d\n", (void *)head, head->n);
+			exit(98);
 		}
-	}
-	else
-	{
-		for (index = 0; nodes; index++)
-			printf("[%p] %d\n", (void *)head, head->n);
+
+		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
+		nodes++;
 	}
-
-	printf("-> [%p] %d\n", (void *)head, head->n);
+	head = NULL;
 	return (nodes);
-
 }
